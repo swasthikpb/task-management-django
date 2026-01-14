@@ -1,0 +1,33 @@
+{% extends "base.html" %}
+
+{% block content %}
+<h2>Admin Dashboard</h2>
+
+<p>Welcome, <strong>{{ user.username }}</strong></p>
+<p><strong>Role:</strong> {{ user.role }}</p>
+
+<hr>
+
+<h3>Quick Actions</h3>
+
+{% if user.role == "SUPERADMIN" %}
+<div class="dashboard-buttons">
+    <a href="/admin-panel/users/" class="btn">Manage Users</a>
+    <a href="/admin-panel/admins/" class="btn">Manage Admins</a>
+    <a href="/admin-panel/users/assign/" class="btn">Assign User to Admin</a>
+    <a href="/admin-panel/users/create/" class="btn">Create User / Admin</a>
+    <a href="/admin-panel/tasks/" class="btn">View All Tasks</a>
+</div>
+{% endif %}
+{% if user.role == "ADMIN" %}
+<div class="dashboard-buttons">
+    <a href="/admin-panel/tasks/" class="btn">Manage Tasks</a>
+    <a href="/admin-panel/tasks/create/" class="btn">Create Task</a>
+    <a href="/admin-panel/users/assign-self/" class="btn btn-warning">
+        Assign Users to Me
+    </a>
+</div>
+{% endif %}
+
+
+{% endblock %}

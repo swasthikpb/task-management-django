@@ -1,0 +1,31 @@
+{% extends "base.html" %}
+{% block content %}
+
+<h2>Create User / Admin</h2>
+
+<form method="post">
+    {% csrf_token %}
+
+    <label>Username:</label><br>
+    <input type="text" name="username" required><br><br>
+
+    <label>Password:</label><br>
+    <input type="password" name="password" required><br><br>
+
+    <label>Role:</label><br>
+    <select name="role">
+        <option value="USER">User</option>
+        <option value="ADMIN">Admin</option>
+    </select><br><br>
+    <div class="dashboard-buttons">
+    <a class="btn btn-success">
+        <button type="submit">Create</button>
+    </a>
+    
+    </div>
+</form>
+
+<br>
+<a href="/admin-panel/users/">Back</a>
+
+{% endblock %}

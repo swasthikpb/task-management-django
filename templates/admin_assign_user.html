@@ -1,0 +1,31 @@
+{% extends "base.html" %}
+{% block content %}
+
+<h2>Assign User to Yourself</h2>
+
+{% if error %}
+<p class="error">{{ error }}</p>
+{% endif %}
+
+{% if users %}
+<form method="post">
+    {% csrf_token %}
+
+    <label>Select User</label>
+    <select name="user" required>
+        {% for u in users %}
+            <option value="{{ u.id }}">{{ u.username }}</option>
+        {% endfor %}
+    </select>
+
+    <button type="submit" class="btn btn-success">
+        Assign to Me
+    </button>
+</form>
+{% else %}
+<p>No unassigned users available.</p>
+{% endif %}
+
+<a href="/admin-panel/">Back</a>
+
+{% endblock %}

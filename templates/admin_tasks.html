@@ -1,0 +1,32 @@
+{% extends "base.html" %}
+{% block content %}
+
+<h2>My Assigned Tasks</h2>
+
+<!-- <a href="/admin-panel/tasks/create/">Create Task</a> -->
+
+<table border="1" cellpadding="8">
+<tr>
+    <th>Title</th>
+    <th>User</th>
+    <th>Status</th>
+    <th>Action</th>
+</tr>
+
+{% for task in tasks %}
+<tr>
+    <td>{{ task.title }}</td>
+    <td>{{ task.assigned_to.username }}</td>
+    <td>{{ task.status }}</td>
+    <td>
+        {% if task.status == "COMPLETED" %}
+            <a href="/admin-panel/tasks/{{ task.id }}/report/">View Report</a>
+        {% else %}
+            —
+        {% endif %}
+    </td>
+</tr>
+{% endfor %}
+</table>
+
+{% endblock %}

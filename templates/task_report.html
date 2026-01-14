@@ -1,0 +1,33 @@
+{% extends "base.html" %}
+
+{% block content %}
+<h2>Task Completion Report</h2>
+
+<table>
+    <tr>
+        <th>Task Title</th>
+        <td>{{ task.title }}</td>
+    </tr>
+    <tr>
+        <th>Assigned To</th>
+        <td>{{ task.assigned_to.username }}</td>
+    </tr>
+    <tr>
+        <th>Status</th>
+        <td>{{ task.status }}</td>
+    </tr>
+    <tr>
+        <th>Worked Hours</th>
+        <td>{{ task.worked_hours }}</td>
+    </tr>
+    <tr>
+        <th>Completion Report</th>
+        <td>{{ task.completion_report }}</td>
+    </tr>
+</table>
+
+<br>
+
+<a class="btn" href="/admin-panel/tasks/">← Back to Tasks</a>
+
+{% endblock %}

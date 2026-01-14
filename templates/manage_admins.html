@@ -1,0 +1,22 @@
+{% extends "base.html" %}
+{% block content %}
+
+<h2>Manage Admins</h2>
+
+<table border="1">
+<tr>
+  <th>Username</th>
+  <th>Action</th>
+</tr>
+
+{% for admin in admins %}
+<tr>
+  <td>{{ admin.username }}</td>
+  <td>
+    <a href="/admin-panel/users/delete/{{ admin.id }}/">Delete</a>
+  </td>
+</tr>
+{% endfor %}
+</table>
+
+{% endblock %}

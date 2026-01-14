@@ -1,0 +1,25 @@
+{% extends "base.html" %}
+{% block content %}
+
+<h2>Assign User to Admin</h2>
+
+<form method="post">
+{% csrf_token %}
+<select name="user">
+  {% for u in users %}
+    <option value="{{ u.id }}">{{ u.username }}</option>
+  {% endfor %}
+</select>
+
+<select name="admin">
+  {% for a in admins %}
+    <option value="{{ a.id }}">{{ a.username }}</option>
+  {% endfor %}
+</select>
+
+<div class="dashboard-buttons">
+<button type="submit">Assign</button>
+</div>
+</form>
+
+{% endblock %}

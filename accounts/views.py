@@ -6,7 +6,6 @@ from .models import User
 
 
 def web_login(request):
-    # 🔐 If already logged in, redirect to dashboard
     if request.user.is_authenticated:
         return redirect("/admin-panel/")
 

@@ -6,6 +6,10 @@ from .models import User
 
 
 def web_login(request):
+    # 🔐 If already logged in, redirect to dashboard
+    if request.user.is_authenticated:
+        return redirect("/admin-panel/")
+
     if request.method == "POST":
         username = request.POST.get("username")
         password = request.POST.get("password")
@@ -15,7 +19,9 @@ def web_login(request):
             login(request, user)
             return redirect("/admin-panel/")
         else:
-            return render(request, "login.html", {"error": "Invalid credentials"})
+            return render(request, "login.html", {
+                "error": "Invalid credentials"
+            })
 
     return render(request, "login.html")
 

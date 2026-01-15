@@ -14,6 +14,7 @@ from .views import (
 )
 
 urlpatterns = [
+    path("", web_login),
     path("login/", web_login),
     path("logout/", web_logout),
 
